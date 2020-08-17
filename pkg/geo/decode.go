@@ -15,13 +15,13 @@ import (
 	"github.com/pierrre/geohash"
 )
 
-// GeohashToPoint converts a geohash to lat/long representation.
-func GeohashToPoint(g string, precision int) (*Geometry, error) {
+// GeoHashToPoint converts a GeoHash to a Geometry Point using a Lng/Lat representation of the GeoHash
+func GeoHashToPoint(g string, precision int) (*Geometry, error) {
 	if len(g) == 0 {
 		return nil, errors.Newf("Length of geohash must be greater than 0")
 	}
 	
-	// if precision is more than the length of the geohash 
+	// If precision is more than the length of the geohash 
 	// or if precision is less than 0 then set
 	// precision equal to length of geohash.
 	if precision > len(g) || precision < 0 {
